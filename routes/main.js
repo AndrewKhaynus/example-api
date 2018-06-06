@@ -2,7 +2,7 @@
 
 const TestController = require('../Controllers/Test');
 
-module.exports = app => {
+module.exports = (app, connection) => {
   // Default get request
   app.get('/', async (req, res) => {
     res.status(200).send('Hello world');
@@ -22,5 +22,9 @@ module.exports = app => {
 
   app.get('/test-controller', async (req, res) => {
     return await TestController.processRequestData(req, res);
+  });
+
+  app.post('/test-db', async (req, res) => {
+    return await TestController.dbProcess(req, res, connection);
   });
 };

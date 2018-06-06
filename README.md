@@ -6,7 +6,12 @@ npm i
 ```
 
 ### To start app
+Create config.json like config.example.json file with your credentials
 ```
+// Create and add credentials
+vi config.json
+
+// Start the app
 node app.js
 ```
 

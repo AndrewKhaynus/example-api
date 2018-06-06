@@ -1,4 +1,7 @@
 'use strict';
+
+const Test = require('../Models/Test');
+
 const processRequestData = async (req, res) => {
 //   Some logic
 //  or debug
@@ -6,4 +9,10 @@ const processRequestData = async (req, res) => {
   return res.status(200).send('Done');
 };
 
-module.exports = { processRequestData };
+const dbProcess = async (req, res, connection) => {
+  const testData = await Test.requestData(connection);
+
+  return res.status(200).json(testData);
+};
+
+module.exports = { processRequestData, dbProcess };
